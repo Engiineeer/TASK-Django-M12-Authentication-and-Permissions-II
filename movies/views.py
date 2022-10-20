@@ -7,6 +7,8 @@ from movies.models import Movie
 
 
 def get_movies(request ):
+    if request.user.is_anonymous:
+        return redirect("signin")
     movies = Movie.objects.all()
     context = {
         "movies": movies,
