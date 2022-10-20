@@ -19,7 +19,7 @@
       }
     </style>
   </head>
-  {% if request.user.is_authenticated %}
+  
       
   <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -62,9 +62,7 @@
       <footer class="mt-auto text-center py-2">
         Awesome movies since like forever!
       </footer>
-      {% else %}
-      <h1>YOU NEED TO SIGN IN</h1>
-      {% endif %}
+      
     </body>
   </body>
   </html>

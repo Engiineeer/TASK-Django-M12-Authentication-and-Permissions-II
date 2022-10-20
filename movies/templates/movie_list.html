@@ -32,13 +32,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      {% if request.user.is_authenticated %}
-      <button class="btn btn-dark"><a href="{% url 'signout'%}">sign out</a></button>
-      {% else %}
-      <button class="btn btn-dark"><a href="{% url 'signin'%}">sign in</a></button>
-      <button class="btn btn-dark"><a href="{% url 'signup'%}">sign up</a></button>
-      {% endif %}
-
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -50,6 +44,15 @@
             <a class="nav-link" href="{% url 'movie-list' %}">Movies</a>
           </li>
         </ul>
+        
+        {% if request.user.is_authenticated %}
+        <button class="btn btn-dark"><a href="{% url 'create-movie'%}">ADD movie</a></button>
+        <button class="btn btn-dark"><a href="{% url 'signout'%}">sign out</a></button>
+        {% else %}
+        <button class="btn btn-dark"><a href="{% url 'signin'%}">sign in</a></button>
+        <button class="btn btn-dark"><a href="{% url 'signup'%}">sign up</a></button>
+        {% endif %}
+
       </div>
     </nav>
 

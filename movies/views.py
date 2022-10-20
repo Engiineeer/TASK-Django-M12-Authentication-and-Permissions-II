@@ -1,14 +1,14 @@
 from django.db import OperationalError
 from django.http import Http404
 from django.shortcuts import redirect, render
-
+from django.contrib.auth.decorators import login_required
 from movies.forms import MovieForm
 from movies.models import Movie
 
 
 def get_movies(request ):
-    if request.user.is_anonymous:
-        return redirect("signin")
+    # if request.user.is_anonymous:
+    #     return redirect("signin")
     movies = Movie.objects.all()
     context = {
         "movies": movies,
@@ -27,9 +27,11 @@ def get_movie(request, movie_id):
     }
     return render(request, "movie_detail.html", context)
 
-
+@login_required(login_url='signin')
 def create_movie(request):
     form = MovieForm()
+    
+    
     if request.method == "POST":
         # BONUS: This needs to have the `user` injected in the constructor
         # somehow

@@ -44,6 +44,13 @@
             <a class="nav-link" href="{% url 'movie-list' %}">Movies</a>
           </li>
         </ul>
+        {% if request.user.is_authenticated %}
+        
+        <button class="btn btn-dark"><a href="{% url 'signout'%}">sign out</a></button>
+        {% else %}
+        <button class="btn btn-dark"><a href="{% url 'signin'%}">sign in</a></button>
+        <button class="btn btn-dark"><a href="{% url 'signup'%}">sign up</a></button>
+        {% endif %}
       </div>
     </nav>
 
