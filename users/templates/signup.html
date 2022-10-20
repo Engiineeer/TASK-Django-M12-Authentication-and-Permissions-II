@@ -7,18 +7,21 @@
     <title>signup</title>
 </head>
 <body>
-    <form 
-    action="{% url 'signup' %}"
-    method="POST"
-    >
-    {% csrf_token %}
-    {{form}}
-    <button
-    class="btn btn_dark"
-    type="submit"
-    >signup</button>
+    <div>
+        <form 
+        action="{% url 'signup' %}"
+        method="POST"
+        >
+        {% csrf_token %}
+        {{form}}
+        <button
+        class="btn btn_dark"
+        type="submit"
+        >signup</button>
     </form>
-
+    
+    
+</div>
     
 </body>
 </html>

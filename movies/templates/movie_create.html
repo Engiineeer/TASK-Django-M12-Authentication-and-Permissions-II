@@ -19,47 +19,53 @@
       }
     </style>
   </head>
+  {% if request.user.is_authenticated %}
+      
   <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">CodedDB</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="{% url 'home' %}">CodedDB</a>
+      <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">
+            Home <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'movie-list' %}">Movies</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
   
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{% url 'home' %}">
-                Home <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'movie-list' %}">Movies</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-  
-      <main class="bg-light h-100">
+  <main class="bg-light h-100">
         <form class="container py-2" action="{% url 'create-movie' %}" method="POST">
-            <!-- prettier-ignore -->
-            {% csrf_token %}
-            {{ form | crispy }}
-            <button class="btn btn-success" type="submit">Add Movie</button>
+          <!-- prettier-ignore -->
+          {% csrf_token %}
+          {{ form | crispy }}
+          <button class="btn btn-success" type="submit">Add Movie</button>
         </form>
       </main>
-  
+      
       <footer class="mt-auto text-center py-2">
         Awesome movies since like forever!
       </footer>
+      {% else %}
+      <h1>YOU NEED TO SIGN IN</h1>
+      {% endif %}
     </body>
   </body>
-</html>
+  </html>
+  

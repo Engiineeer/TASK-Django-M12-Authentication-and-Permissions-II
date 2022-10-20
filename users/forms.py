@@ -8,7 +8,7 @@ User = get_user_model()
 class UserSignupForm(forms.ModelForm):
     class Meta:
         model = User
-        field = ["username","password"]
+        fields = ["username","password"]
         widgets = {
             "password" : forms.PasswordInput()
         }

@@ -1,4 +1,4 @@
-from telnetlib import LOGOUT
+
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login , logout
 
@@ -15,7 +15,7 @@ def signup(req):
             user.save()
             return redirect("movie-list")
     context = {"form": form}
-    return render(req,"signup.html")
+    return render(req,"signup.html", context)
 
 def signin(req):
     form = UserSigninForm()
@@ -27,7 +27,8 @@ def signin(req):
             auth_user = authenticate(username=username, password=password)
             if auth_user is not None:
                 login(req, auth_user)
-                redirect("home")
+                return redirect("movie-list")
+                
 
 
     context = {"form": form}
